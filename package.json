@@ -1,0 +1,21 @@
+{
+  "name": "final_ptoject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.10.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "mongodb": "^2.2.5",
+    "mongoose": "^4.5.9",
+    "request": "^2.74.0"
+  }
+}
