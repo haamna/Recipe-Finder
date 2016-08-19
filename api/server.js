@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 var PAGE_ACCESS_TOKEN = 'EAAD66wWseoIBAAZB5t8GCdlG5j2XOw6b9iEwAB4DYlaUUZBLk68JE3mGkmEz7ZAG7bIP1SELAZBHcJv4gAzvUywsvYCThvk0Oj6y5vKjyP1vyUxyC0IovOctLpZA6RqBEBax5XnH9JnLdmz1hR5oCwxRpgquTj1ZCfDTt5j4nbEAZDZD';
 // start express on port 8080 (spin up Server`)
-app.listen(8080, function() {
+app.listen(process.env.PORT || 8080, function() {
 	console.log('Server Started on http://localhost:8080');
 	console.log('Press CTRL + C to stop server');
 
@@ -72,7 +72,7 @@ app.post('/webhook', function(req, res){
 
 // create instance of Mongoose and connect to our local / MongoDB database at the directory specified earlier
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/recipe-finder');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/recipe-finder');
 // log to console any errors or successful connection
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
