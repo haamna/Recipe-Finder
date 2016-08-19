@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 
 // create a model for using schema
 var Recipe = mongoose.model('Recipe', new Schema({
-	Title: {
+	title: {
 		type: String,
 		required: true
 	},
