@@ -50,7 +50,7 @@ app.post('/webhook', function(req, res){
 
 			// iterate over each messaging event - the actual message, there are different type of mesages, 
 			pageEntry.messaging.forEach(function(messagingEvent){
-				var recipientID = event.recipient.id;
+				var recipientID = messagingEvent.recipient.id;
 				sendTextMessage(recipientID, 'hello from bot');
 			// 	if (messagingEvent.optin){
 			// 		receivedAuthentication(messagingEvent);	
