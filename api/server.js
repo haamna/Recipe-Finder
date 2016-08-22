@@ -5,26 +5,21 @@ var request = require('request');
 // run Express
 var app = express();
 //requiring the mongoose model from models/recipes.js
-// var Recipe = require('./models/Recipes');
+var Recipe = require('./models/Recipes');
 var init = require('./Routes/init');
 
-// telling/giving external browsers to get the whole app (not just one html page) upon the request they send to the server (as it's angular its a spa).
+//giving external browsers the whole app (not just one html page) upon the request they send to the server (as it's angular its an spa)
 app.use(express.static(__dirname + '/app/'));
-// process application/x-www-form-urlencoded
+// process application
 app.use(bodyParser.urlencoded({extended: false}));
 // process application/json
 app.use(bodyParser.json());
 
 var PAGE_ACCESS_TOKEN = 'EAAD66wWseoIBAAZB5t8GCdlG5j2XOw6b9iEwAB4DYlaUUZBLk68JE3mGkmEz7ZAG7bIP1SELAZBHcJv4gAzvUywsvYCThvk0Oj6y5vKjyP1vyUxyC0IovOctLpZA6RqBEBax5XnH9JnLdmz1hR5oCwxRpgquTj1ZCfDTt5j4nbEAZDZD';
-// start express on port 8080 (spin up Server`)
+// start express on port 8080 (spin up Server)
 app.listen(process.env.PORT || 8080, function() {
 	console.log('Server Started on http://localhost:8080');
 	console.log('Press CTRL + C to stop server');
-
-// create API endpoint with GET request(index route)
-// app.get('/', function(req,res){
-	// res.send('This is a TestBot Server');
-// });
 
 // Facebook Webhook (facebook verification)
 app.get('/webhook', function(req,res){
@@ -36,23 +31,42 @@ app.get('/webhook', function(req,res){
 });
 // Receiving messages - listening for POST callbacks at our webhook, all callbacks will be made to this webhook
 app.post('/webhook', function(req, res){
-	
 	var data = req.body;
-	// checking that request is coming fb page itself
+	// checking that request is coming from fb page itself
 	if (data.object =='page'){
-	// 	console.log(data)
-	// 	// iterate over each entry (packet of data/ user messages)
+	// 	// iterate over each entry (the user messages coming in,in packets of data)
 		data.entry.forEach(function(pageEntry){
-			// var pageID = pageEntry.id;
-			// var timeOfEvent = pageEntry.time;
-
-
-
-			// iterate over each messaging event - the actual message, there are different type of mesages, 
-			pageEntry.messaging.forEach(function(messagingEvent){
+			}
+	// iterate over each messaging event - the actual text message
+		pageEntry.messaging.forEach(function(messagingEvent){
+			var events = req.body.entry[0].messaging;
+			for (i = 0; i < events.length; i++) {
+				var event = events[i];
+				if (event.message && event.message.text) {
+					// sending to api.ai
+					var text = messagingEvent.message.text;
+					apiAiService
+					.getIntent(text)
+					.then function
+					);
+				}
+						
+			}
+	
 				// var recipientID = messagingEvent.recipient.id;
+
+				
 				var senderID = messagingEvent.sender.id;
-				sendTextMessage(senderID, 'hello from bot');
+				Recipe.find({
+					'intent': '1312'
+				})
+				.then(function (record) {
+					sendGenericResponse(senderID, title, desc, imageUrl, url);
+				});
+				// sendTextMessage(senderID, 'hello from bot');
+
+
+				// sendGenericResponse(senderID, title, desc, imageUrl, url);
 			// 	if (messagingEvent.optin){
 			// 		receivedAuthentication(messagingEvent);	
 			// 	} else if (messagingEvent.message) {

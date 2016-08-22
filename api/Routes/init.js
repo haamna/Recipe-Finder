@@ -4,6 +4,7 @@ var newRecipe = Recipe (
  		title : "Fresh herb infused Quinoa Salad",
  		imageurl: "http://cleanfoodcrush.com/wp-content/uploads/2016/08/Fresh-herb-infused-Quinoa-Salad.jpg",
  		url: "http://cleanfoodcrush.com/herb-quinoa-salad/",
+ 		intent"glutenfree_salad_lunch ",
  		one: "Gluten Free",
  		two: "Lunch",
  		three: "Salad",
@@ -14,7 +15,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Fresh herb infused Quinoa Salad")
 	}
 });
 
@@ -32,7 +33,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Veggie and Hummus Sandwich")
 	}
 });
 
@@ -50,7 +51,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Teriyaki Chicken Lettuce Wraps")
 	}
 });
 
@@ -68,7 +69,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Veggie Hummus Cucumber Boats")
 	}
 });
 
@@ -86,7 +87,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Vegan Strawberry Ice Cream")
 	}
 });
 
@@ -95,7 +96,8 @@ var newRecipe = Recipe (
 		title : "Chopped Power Salad with Creamy Parsley Dressing",
  		imageurl: "http://meaningfuleats.com/wp-content/uploads/2014/04/IMG_30361.jpg",
  		url: "http://meaningfuleats.com/chopped-power-salad-with-creamy-parsley-dressing-gluten-free-dairy-free/",
- 		one: "GLuten Free",
+ 		intent: "glutenfree_salad_lunch"
+ 		one: "Gluten Free",
  		two: "Lunch",
  		three: "Salad",
  	}
@@ -104,7 +106,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Chopped Power Salad with Creamy Parsley Dressing")
 	}
 });
 
@@ -121,7 +123,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Healthy 5 Ingredient Granola Bars")
 	}
 });
 
@@ -139,7 +141,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Nutella Peanut Butter Cups")
 	}
 });
 
@@ -157,7 +159,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("Nutella and Banana Pancakes")
 	}
 });
 
@@ -175,7 +177,7 @@ newRecipe.save(function(err){
 	if (err) {
 		console.log(err)
 	} else {
-		console.log("Recipe Added")
+		console.log("2 Ingredient Nutella Brownies")
 	}
 });
 

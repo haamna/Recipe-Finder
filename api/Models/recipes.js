@@ -18,6 +18,10 @@ var Recipe = mongoose.model('Recipe', new Schema({
 		type: String,
 		required: true
 	},
+	intent: {
+		type: String,
+		required: true
+	},
 	one: {
 		type: String,
 	},
@@ -29,5 +33,5 @@ var Recipe = mongoose.model('Recipe', new Schema({
 	}	
 }));
 
-// making it available to Node applications
+// making it available to node applications
 module.exports = Recipe;
