@@ -7,6 +7,7 @@ var app = express();
 //requiring the mongoose model from models/recipes.js
 var Recipe = require('./models/Recipes');
 var init = require('./Routes/init');
+var apiAiService = require('')
 
 //giving external browsers the whole app (not just one html page) upon the request they send to the server (as it's angular its an spa)
 app.use(express.static(__dirname + '/app/'));
@@ -26,7 +27,7 @@ app.listen(process.env.PORT || 8080, function() {
 // });
 
 // Facebook Webhook (facebook verification)
-app.get('/', function(req,res){
+app.get('/webhook', function(req,res){
 	if (req.query['hub.verify_token']==='recipefinder_verify_token'){
 		res.send(req.query['hub.challenge']);
 	} else {
@@ -38,8 +39,9 @@ app.post('/webhook', function(req,res){
 	var data = req.body;
 	// checking that request is coming from fb page itself
 	if (data.object =='page'){
-	// iterate over each entry (the user messages coming in,in packets of data / iterate over each messaging event - the actual text message
+	// iterate over each entry (the user messages coming in,in packets of data / iterate over each messaging event 
 	data.entry.forEach(function(pageEntry){
+		// for each individual message
 		pageEntry.mesaging.forEach(function(messagingEvent){
 			var events = req.body.entry[0].messaging;
 			for (i=0; i < events.length; i++) {
@@ -49,25 +51,22 @@ app.post('/webhook', function(req,res){
 					var text = messagingEvent.message.text;
 					apiAiService
 					.getIntent(text)
-					.then function(intent){
+					.then(function(intent){
 						// go to dababase and fetch recipe belonging to that intent
 						var recipes = Recipes.find({"intent":intent}, function(err, recipe){
 							if (err){
 								console.log(err);
 							} else {
 								console.log(recipe)
-							}))
-
-						}
-							
+							}
+						});
+					})	
 						if (recipes) {
 							// send button or card message
-
 
 						} else {
 							sendTextMessage(senderID, 'no recipes found');
 						}
-
 						console.log('apiai intent: ')
 						sendResponse(intent, sender, event)
 					};
@@ -75,18 +74,7 @@ app.post('/webhook', function(req,res){
 			}
 		})
 	})
-
-
-
-
-
-	
-	
-		
-
-				// var recipientID = messagingEvent.recipient.id;
-
-				
+		// var recipientID = messagingEvent.recipient.id;	
 				var senderID = messagingEvent.sender.id;
 				Recipe.find({
 					'intent': 
@@ -95,8 +83,6 @@ app.post('/webhook', function(req,res){
 					sendGenericResponse(senderID, title, desc, imageUrl, url);
 				});
 				// sendTextMessage(senderID, 'hello from bot');
-
-
 				// sendGenericResponse(senderID, title, desc, imageUrl, url);
 			// 	if (messagingEvent.optin){
 			// 		receivedAuthentication(messagingEvent);	
