@@ -21,8 +21,12 @@ app.listen(process.env.PORT || 8080, function() {
 	console.log('Server Started on http://localhost:8080');
 	console.log('Press CTRL + C to stop server');
 
+// app.get('/', function(req,res){
+// 	res.send('This is a testBot')
+// });
+
 // Facebook Webhook (facebook verification)
-app.get('/webhook', function(req,res){
+app.get('/', function(req,res){
 	if (req.query['hub.verify_token']==='recipefinder_verify_token'){
 		res.send(req.query['hub.challenge']);
 	} else {
@@ -30,29 +34,48 @@ app.get('/webhook', function(req,res){
 	}
 });
 // Receiving messages - listening for POST callbacks at our webhook, all callbacks will be made to this webhook
-app.post('/webhook', function(req, res){
+app.post('/webhook', function(req,res){
 	var data = req.body;
 	// checking that request is coming from fb page itself
 	if (data.object =='page'){
-	// 	// iterate over each entry (the user messages coming in,in packets of data)
-		data.entry.forEach(function(pageEntry){
-			}
-	// iterate over each messaging event - the actual text message
-		pageEntry.messaging.forEach(function(messagingEvent){
+	// iterate over each entry (the user messages coming in,in packets of data / iterate over each messaging event - the actual text message
+	data.entry.forEach(function(pageEntry){
+		pageEntry.mesaging.forEach(function(messagingEvent){
 			var events = req.body.entry[0].messaging;
-			for (i = 0; i < events.length; i++) {
+			for (i=0; i < events.length; i++) {
 				var event = events[i];
 				if (event.message && event.message.text) {
-					// sending to api.ai
+					// send to api.ai
 					var text = messagingEvent.message.text;
 					apiAiService
 					.getIntent(text)
-					.then function
-					);
+					.then function(intent){
+						// go to dababase and fetch recipe belonging to that intent
+						var recipes = Recipes.find()
+						if (recipes) {
+							// send button or card message
+
+
+						} else {
+							sendTextMessage(senderID, 'no recipes found');
+						}
+
+						console.log('apiai intent: ')
+						sendResponse(intent, sender, event)
+					};
 				}
-						
 			}
+		})
+	})
+
+
+
+
+
 	
+	
+		
+
 				// var recipientID = messagingEvent.recipient.id;
 
 				
