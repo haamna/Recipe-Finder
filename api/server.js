@@ -89,7 +89,7 @@ app.post('/webhook', function(req,res){
 				
 				var senderID = messagingEvent.sender.id;
 				Recipe.find({
-					'intent': '1312'
+					'intent': 
 				})
 				.then(function (record) {
 					sendGenericResponse(senderID, title, desc, imageUrl, url);
