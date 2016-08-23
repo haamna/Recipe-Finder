@@ -51,7 +51,15 @@ app.post('/webhook', function(req,res){
 					.getIntent(text)
 					.then function(intent){
 						// go to dababase and fetch recipe belonging to that intent
-						var recipes = Recipes.find()
+						var recipes = Recipes.find({"intent":intent}, function(err, recipe){
+							if (err){
+								console.log(err);
+							} else {
+								console.log(recipe)
+							}))
+
+						}
+							
 						if (recipes) {
 							// send button or card message
 
