@@ -1,9 +1,7 @@
 
 
 // receiving messages 
-function () {
-
-}
+// function() {}
 
 
 

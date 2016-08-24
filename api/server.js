@@ -117,17 +117,50 @@ db.once('open', function() {
 });
 
 // creating a stucture for the response
-function sendTextMessage(recipientId, messageText) {
+// function sendTextMessage(recipientId, messageText) {
+//   var messageData = {
+//     recipient: {
+//       id: recipientId
+//     },
+//     message: {
+//       text: messageText
+//     }
+//   };
+//   callSendAPI(messageData);
+// }
+
+// templated message
+function sendGenericMessage(recipientId, recipe) {
   var messageData = {
     recipient: {
-      id: recipientId
+      id: recipientId     
     },
-    message: {
-      text: messageText
+    message:{
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: recipe.title,
+            imageUrl: recipe.imageUrl ,
+            url: recipe.url ,
+            buttons: [{
+              type: "web_url",
+              url: recipe.url,
+              title: "View recipe"
+            }, {
+              type: "postback",
+              title: "Call Postback",
+              payload: "Payload for this first bubble",
+            }]
+          }]
+        }
+      }
     }
   };
   callSendAPI(messageData);
 }
+
 
 // actual message getting sent, json format, for text msg
 function callSendAPI(messageData) {

@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// create a schema (for individual recipe)
-// var recipeSchema = ;
-
 // create a model for using schema
 var Recipe = mongoose.model('Recipe', new Schema({
   title: {
