@@ -2,7 +2,7 @@ var apiai = require('apiai');
 var app = apiai("4505c8543b8045059c362be1864f1d19");
 var q = require('q');
  
-var request = app.textRequest('<Your text query>');
+var request = app.textRequest(message);
 var deferred = q.defer();
  
 request.on('response', function(response) {

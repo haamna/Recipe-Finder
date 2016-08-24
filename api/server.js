@@ -24,9 +24,10 @@ app.listen(process.env.PORT || 8080, function() {
   console.log('Press CTRL + C to stop server');
 });
 
-// app.get('/', function(req,res){
-// 	res.send('This is a testBot')
-// });
+// index route
+app.get('/', function(req,res){
+res.send('This is a testBot')
+});
 
 // Facebook Webhook (facebook verification)
 app.get('/webhook', function(req, res) {
