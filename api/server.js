@@ -7,7 +7,7 @@ var app = express();
 //requiring the mongoose model from models/recipes.js
 var Recipe = undefined; // require('./models/Recipes');
 var init = require('./Routes/init');
-var apiAiService = require('./services/apiaiservice.js');
+var apiAiService = require('./Services/apiaiservice.js');
 var apiai = require('apiai');
 
 //giving external browsers the whole app (not just one html page) upon the request they send to the server (as it's angular its an spa)
