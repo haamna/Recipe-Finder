@@ -64,17 +64,15 @@ app.post('/webhook', function(req, res) {
               Recipes.findOne({ "intent": intent }, function(err, recipe) {
                 console.log(recipe);
                 if (err || !recipe) {
-                  sendTextMessage(senderID, 'sorry no recipes found');
-                } else {
-                  sendTextMessage(senderID, recipe.url);
-                }
-                else if (messagingEvent.postback) {
-                  receivedPostback(messagingEvent);
+                  sendTextMessage(senderID, 'sorry no recipes found, try another one');
+                // } else {
+                  // sendTextMessage(senderID, recipe.url);
+                } else (messagingEvent.postback) {
+                  receivedPostback(messagingEvent);                   
                 }
               });
             });
         }
-
         //   }
         // }
       });
@@ -133,7 +131,7 @@ db.once('open', function() {
 // }
 
 // templated message
-function sendGenericMessage(recipientId, recipe) {
+function sendGenericMessage(recipientId, messageText, recipe) {
   var messageData = {
     recipient: {
       id: recipientId     
@@ -143,7 +141,8 @@ function sendGenericMessage(recipientId, recipe) {
         type: "template",
         payload: {
           template_type: "generic",
-          elements: [{
+          elements: [
+            {
             title: recipe.title,
             imageUrl: recipe.imageUrl,
             url: recipe.url,
