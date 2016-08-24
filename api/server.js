@@ -55,6 +55,7 @@ app.post('/webhook', function(req, res) {
             apiAiService
               .getIntent(text)
               .then(function(intent) {
+                console.log(intent);
                 // go to dababase and fetch recipe belonging to that intent
                 Recipes.findOne({ "intent": intent }, function(err, recipe) {
                   if (err) {
