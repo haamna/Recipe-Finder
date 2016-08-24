@@ -68,6 +68,9 @@ app.post('/webhook', function(req, res) {
                 } else {
                   sendTextMessage(senderID, recipe.url);
                 }
+                else if (messagingEvent.postback) {
+                  receivedPostback(messagingEvent);
+                }
               });
             });
         }
@@ -142,8 +145,8 @@ function sendGenericMessage(recipientId, recipe) {
           template_type: "generic",
           elements: [{
             title: recipe.title,
-            imageUrl: recipe.imageUrl ,
-            url: recipe.url ,
+            imageUrl: recipe.imageUrl,
+            url: recipe.url,
             buttons: [{
               type: "web_url",
               url: recipe.url,
@@ -161,6 +164,22 @@ function sendGenericMessage(recipientId, recipe) {
   callSendAPI(messageData);
 }
 
+function receivedPostback(event) {
+  var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfPostback = event.timestamp;
+
+  // The 'payload' param is a developer-defined field which is set in a postback 
+  // button for Structured Messages. 
+  var payload = event.postback.payload;
+
+  console.log("Received postback for user %d and page %d with payload '%s' " + 
+    "at %d", senderID, recipientID, payload, timeOfPostback);
+
+  // When a postback is called, we'll send a message back to the sender to 
+  // let them know it was successful
+  sendTextMessage(senderID, "Postback called");
+}
 
 // actual message getting sent, json format, for text msg
 function callSendAPI(messageData) {

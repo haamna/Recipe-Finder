@@ -7,7 +7,7 @@ var Recipe = mongoose.model('Recipe', new Schema({
     type: String,
     required: true
   },
-  imageurl: {
+  imageUrl: {
     type: String,
     required: true
   },
