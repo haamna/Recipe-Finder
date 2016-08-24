@@ -5,8 +5,8 @@ var request = require('request');
 // run Express
 var app = express();
 //requiring the mongoose model from models/recipes.js
-var Recipe = undefined; // require('./models/Recipes');
-var init = require('./Routes/init');
+var Recipes = require('./models/Recipes');
+// var init = require('./Routes/init');
 var apiAiService = require('./Services/apiaiservice.js');
 var apiai = require('apiai');
 
@@ -61,6 +61,7 @@ app.post('/webhook', function(req, res) {
               console.log(intent);
               // go to dababase and fetch recipe belonging to that intent
               Recipes.findOne({ "intent": intent }, function(err, recipe) {
+                console.log(recipe);
                 if (err) {
                   sendTextMessage(senderID, 'sorry no recipes found');
                 } else {
