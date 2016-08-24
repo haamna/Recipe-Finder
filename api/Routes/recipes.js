@@ -13,7 +13,7 @@ router.get('/', function(req,res){
 
 });
 
-// get a specific record by by ID
+// get a specific record by ID
 router.get('/:recipeId',function(req,res){
 	Recipe.findOne({"_id":req.params.objectId}, function(err,object){
 		if(err){
