@@ -45,7 +45,7 @@ app.post('/webhook', function(req, res) {
     // iterate over each entry (the user messages coming in,in packets of data / iterate over each messaging event 
     data.entry.forEach(function(pageEntry) {
       // for each individual message
-      pageEntry.mesaging.forEach(function(messagingEvent) {
+      pageEntry.messaging.forEach(function(messagingEvent) {
         var events = req.body.entry[0].messaging;
         for (i = 0; i < events.length; i++) {
           var event = events[i];
