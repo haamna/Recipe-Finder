@@ -47,6 +47,7 @@ app.post('/webhook', function(req, res) {
       // for each individual message
       pageEntry.messaging.forEach(function(messagingEvent) {
         console.log(messagingEvent);
+        var senderID = event.sender.id;
         // var events = req.body.entry[0].messaging;
         // for (i = 0; i < events.length; i++) {
         //   var event = events[i];
@@ -62,7 +63,7 @@ app.post('/webhook', function(req, res) {
               // go to dababase and fetch recipe belonging to that intent
               Recipes.findOne({ "intent": intent }, function(err, recipe) {
                 console.log(recipe);
-                if (err) {
+                if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found');
                 } else {
                   sendTextMessage(senderID, recipe.url);
