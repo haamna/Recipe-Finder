@@ -5,7 +5,7 @@ var request = require('request');
 // run Express
 var app = express();
 //requiring the mongoose model from models/recipes.js
-var Recipes = require('./models/Recipes');
+var Recipes = require('./Models/Recipes');
 // var init = require('./Routes/init');
 var apiAiService = require('./Services/apiaiservice.js');
 var apiai = require('apiai');
