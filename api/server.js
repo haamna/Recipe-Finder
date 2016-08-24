@@ -25,8 +25,8 @@ app.listen(process.env.PORT || 8080, function() {
 });
 
 // index route
-app.get('/', function(req,res){
-res.send('This is a testBot')
+app.get('/', function(req, res) {
+  res.send('This is a testBot')
 });
 
 // Facebook Webhook (facebook verification)
@@ -46,10 +46,11 @@ app.post('/webhook', function(req, res) {
     data.entry.forEach(function(pageEntry) {
       // for each individual message
       pageEntry.messaging.forEach(function(messagingEvent) {
-        var events = req.body.entry[0].messaging;
-        for (i = 0; i < events.length; i++) {
-          var event = events[i];
-          if (event.message && event.message.text) {
+        console.log(messagingEvent);
+        // var events = req.body.entry[0].messaging;
+        // for (i = 0; i < events.length; i++) {
+        //   var event = events[i];
+        //   if (event.message && event.message.text) {
             // send to api.ai
             var text = messagingEvent.message.text;
             apiAiService
@@ -65,34 +66,34 @@ app.post('/webhook', function(req, res) {
                   }
                 });
               });
-          }
-        }
+        //   }
+        // }
       });
     });
-         // var recipientID = messagingEvent.recipient.id;	
-         // var senderID = messagingEvent.sender.id;
-         // Recipe.find({
-         //     'intent':
-         //   })
-         //   .then(function(record) {
-         //     sendGenericResponse(senderID, title, desc, imageUrl, url);
-         //   });
-         // sendTextMessage(senderID, 'hello from bot');
-         // sendGenericResponse(senderID, title, desc, imageUrl, url);
-         // 	if (messagingEvent.optin){
-         // 		receivedAuthentication(messagingEvent);	
-         // 	} else if (messagingEvent.message) {
-         // 		receivedMessage(messagingEvent);
-         // 	} else if (messagingEvent.delivery) {
-         // 		receivedDeliveryConfirmation(messagingEvent);
-         // 	} else if (messagingEvent.postback) {
-         // 		receivedPostback(messagingEvent);
-         // 	} else {
-         // 		console.log("Webhook received unknown messagingEvent: ", messagingEvent);
-         // 	}
-         //   });
-         // });
-         // assuming all went well need to send back a 200 within 20 seconds, to let us know you've succesfully received the callback.  Otherwise the request will time out.
+    // var recipientID = messagingEvent.recipient.id;	
+    // var senderID = messagingEvent.sender.id;
+    // Recipe.find({
+    //     'intent':
+    //   })
+    //   .then(function(record) {
+    //     sendGenericResponse(senderID, title, desc, imageUrl, url);
+    //   });
+    // sendTextMessage(senderID, 'hello from bot');
+    // sendGenericResponse(senderID, title, desc, imageUrl, url);
+    // 	if (messagingEvent.optin){
+    // 		receivedAuthentication(messagingEvent);	
+    // 	} else if (messagingEvent.message) {
+    // 		receivedMessage(messagingEvent);
+    // 	} else if (messagingEvent.delivery) {
+    // 		receivedDeliveryConfirmation(messagingEvent);
+    // 	} else if (messagingEvent.postback) {
+    // 		receivedPostback(messagingEvent);
+    // 	} else {
+    // 		console.log("Webhook received unknown messagingEvent: ", messagingEvent);
+    // 	}
+    //   });
+    // });
+    // assuming all went well need to send back a 200 within 20 seconds, to let us know you've succesfully received the callback.  Otherwise the request will time out.
     // res.sendStatus(200);
     // }
   }
