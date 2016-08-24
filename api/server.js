@@ -47,7 +47,7 @@ app.post('/webhook', function(req, res) {
       // for each individual message
       pageEntry.messaging.forEach(function(messagingEvent) {
         console.log(messagingEvent);
-        var senderID = event.sender.id;
+        var senderID = messagingEvent.sender.id;
         // var events = req.body.entry[0].messaging;
         // for (i = 0; i < events.length; i++) {
         //   var event = events[i];
