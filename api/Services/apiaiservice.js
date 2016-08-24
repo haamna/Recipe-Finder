@@ -7,8 +7,8 @@ function getIntent(message) {
   var deferred = q.defer();
 
   request.on('response', function(response) {
-    console.log(response);
-    deferred.resolve(recipe.result.url);
+    console.log(response.result.metadata.intentName);
+    deferred.resolve(response.result.metadata.intentName);
   });
 
   request.on('error', function(error) {
