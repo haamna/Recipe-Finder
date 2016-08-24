@@ -11,7 +11,7 @@ function getIntent (message){
 	});
 
 	request.on('error', function(error) {
-		deferred.reject(err);
+		deferred.reject(error);
 	});
  
 	request.end();
