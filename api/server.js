@@ -46,26 +46,26 @@ app.post('/webhook', function(req, res) {
     data.entry.forEach(function(pageEntry) {
       // for each individual message
       pageEntry.messaging.forEach(function(messagingEvent) {
-        console.log(messagingEvent);
+        console.log(messagingEvent.message.text);
         // var events = req.body.entry[0].messaging;
         // for (i = 0; i < events.length; i++) {
         //   var event = events[i];
         //   if (event.message && event.message.text) {
-            // send to api.ai
-            var text = messagingEvent.message.text;
-            apiAiService
-              .getIntent(text)
-              .then(function(intent) {
-                console.log(intent);
-                // go to dababase and fetch recipe belonging to that intent
-                Recipes.findOne({ "intent": intent }, function(err, recipe) {
-                  if (err) {
-                    sendTextMessage(senderID, 'sorry no recipes found');
-                  } else {
-                    sendTextMessage(senderID, recipe.url);
-                  }
-                });
-              });
+        // send to api.ai
+        var text = messagingEvent.message.text;
+        apiAiService
+          .getIntent(text)
+          .then(function(intent) {
+            console.log(intent);
+            // go to dababase and fetch recipe belonging to that intent
+            Recipes.findOne({ "intent": intent }, function(err, recipe) {
+              if (err) {
+                sendTextMessage(senderID, 'sorry no recipes found');
+              } else {
+                sendTextMessage(senderID, recipe.url);
+              }
+            });
+          });
         //   }
         // }
       });
