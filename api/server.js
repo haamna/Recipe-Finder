@@ -66,12 +66,14 @@ app.post('/webhook', function(req, res) {
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else if (text === 'Generic') {
-                  sendGenericMessage(senderID, Recipe)
-                } else if {(messagingEvent.postback) {
+                           sendGenericMessage(senderID, Recipe)
+                           continue
+                } 
+                  sendTextMessage(senderID);
+                else if (messagingEvent.postback) {
                     receivedPostback(messagingEvent);
-                }
                 }              
-                // sendTextMessage(senderID, recipe.url);               
+                // sendTextMessage(senderID, recipe.url)          
                 };
               });
             })
@@ -101,7 +103,7 @@ app.post('/webhook', function(req, res) {
     // res.sendStatus(200);
     // }
     res.sendStatus(200);
-    })
+  })
 };
 
 // create instance of Mongoose and connect to our local / MongoDB database at the directory specified earlier
@@ -115,17 +117,17 @@ db.once('open', function() {
 });
 
 // creating a stucture for the response
-// function sendTextMessage(recipientId, messageText) {
-//   var messageData = {
-//     recipient: {
-//       id: recipientId
-//     },
-//     message: {
-//       text: messageText
-//      }
-//    };
-//    callSendAPI(messageData);
-//  }
+function sendTextMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: messageText
+     }
+   };
+   callSendAPI(messageData);
+ }
 
   // templated message
   function sendGenericMessage(recipientId, Recipe) {
