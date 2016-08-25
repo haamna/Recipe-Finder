@@ -66,23 +66,18 @@ app.post('/webhook', function(req, res) {
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else {
-                   sendGenericMessage(recipientId, Recipe);
+                   sendGenericMessage(senderID, recipe.title, recipe.imageUrl, recipe.url);
                 //   sendTextMessage(senderID, recipe.url);
                 // } else (messagingEvent.postback) {
                   // receivedPostback(messagingEvent);                   
                 // }
-                });
+                };
               });
-            }
-        //   }
-        // }
+            })
+        };
       });
-    });
     // var recipientID = messagingEvent.recipient.id;	
     // var senderID = messagingEvent.sender.id;
-    // Recipe.find({
-    //     'intent':
-    //   })
     //   .then(function(record) {
     //     sendGenericResponse(senderID, title, desc, imageUrl, url);
     //   });
@@ -105,8 +100,8 @@ app.post('/webhook', function(req, res) {
     // res.sendStatus(200);
     // }
     res.sendStatus(200);
-  }
-});
+    })
+};
 
 // create instance of Mongoose and connect to our local / MongoDB database at the directory specified earlier
 var mongoose = require('mongoose');
@@ -181,13 +176,10 @@ function receivedPostback(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfPostback = event.timestamp;
-  // The 'payload' param is a developer-defined field which is set in a postback 
-  // button for Structured Messages. 
+  // The 'payload' param is a developer-defined field which is set in a postback button for Structured Messages. 
   var payload = event.postback.payload;
-  console.log("Received postback for user %d and page %d with payload '%s' " + 
-    "at %d", senderID, recipientID, payload, timeOfPostback);
-  // When a postback is called, we'll send a message back to the sender to 
-  // let them know it was successful
+  console.log("Received postback for user %d and page %d with payload '%s' " + "at %d", senderID, recipientID, payload, timeOfPostback);
+  // When a postback is called, we'll send a message back to the sender to let them know it was successful
   sendTextMessage(senderID, "Postback called");
 }
 
