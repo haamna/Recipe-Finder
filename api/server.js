@@ -56,23 +56,23 @@ app.post('/webhook', function(req, res) {
         if (messagingEvent && messagingEvent.message && messagingEvent.message.text) {
           var text = messagingEvent.message.text;
           console.log(text);
-          apiAiService
-            .getIntent(text)
-            .then(function(intent) {
-              console.log(intent);
+          // apiAiService
+          //   .getIntent(text)
+          //   .then(function(intent) {
+              // console.log(intent);
               // go to dababase and fetch recipe belonging to that intent
-              //Recipes.findOne({ "intent": intent }, function(err, recipe) {
-              Recipes.find({}, function(err, objectsArray){
-                console.log(objectsArray);
-                if (err || !objectsArray) {
+              // Recipes.findOne({ "intent": intent }, function(err, recipe) {
+                Recipes.find({}, function(err, recipe){
+                console.log(recipe);
+                if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else {
-                   sendTextMessage(senderID, objectsArray);
+                   sendTextMessage(senderID, recipe.url);
                 // } else (messagingEvent.postback) {
                   // receivedPostback(messagingEvent);                   
                 }
               });
-            });
+           // });
         }
         //   }
         // }
