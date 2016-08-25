@@ -20,8 +20,8 @@ newRecipe.save(function(err) {
 var newRecipe = Recipe({
   title: "Veggie and Hummus Sandwich",
   imageUrl: "http://www.cookingclassy.com/wp-content/uploads/2016/04/veggie_hummus_sandwich9.-1.jpg",
-  url: "http://www.cookingclassy.com/2016/04/veggie-hummus-sandwich/",
-  intent: "veg_lunch_sw ",
+  url: "http://www.cookingclassy.com/2016/04/veggie-hummus-sandwich",
+  intent: "veg_lunch_sw",
   one: "Vegetarian",
   two: "Lunch",
   three: "Sandwichs",
@@ -154,7 +154,7 @@ newRecipe.save(function(err) {
 });
 
 var newRecipe = Recipe({
-  title: " 2 Ingredient Nutella Brownies",
+  title: "2 Ingredient Nutella Brownies",
   imageUrl: "http://67.media.tumblr.com/18d163c19d82a202cdbb725b106d3cd2/tumblr_inline_no1juu3bij1tovgdd_500.jpg",
   url: "http://thenutellanut.tumblr.com/post/118458861076/2-ingredient-nutella-brownies",
   intent: "gf_dessert_bars",
@@ -174,7 +174,7 @@ var newRecipe = Recipe({
   title: "Double Crunch Peanut Butter And Chocolate Chip Fudge",
   imageUrl: "https://i0.wp.com/wholefoodsimply.com/wp-content/uploads/2016/05/double-crunch-PB-choc-chip-fudge.jpg?w=819&ssl=1",
   url: "http://thenutellanut.tumblr.com/post/118458861076/2-ingredient-nutella-brownies",
-  intent: "veg_snack_bar",
+  intent: "veg_side_bar",
   one: "vegetarian",
   two: "snacks/sides",
   three: "Bars/Slices",
