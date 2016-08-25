@@ -55,7 +55,7 @@ var newRecipe = Recipe({
   title: "Veggie Hummus Cucumber Boats",
   imageUrl: "http://www.skinnytaste.com/wp-content/uploads/2016/07/Cucumber-Hummus-Boats-5.jpg",
   url: "http://www.skinnytaste.com/veggie-hummus-cucumber-boats/",
-  intent: "vegan_snack_appetiser ",
+  intent: "vegan_snack_appetiser",
   one: "Vegan",
   two: "Snacks/Sides",
   three: "Appetisers",
@@ -106,10 +106,10 @@ var newRecipe = Recipe({
   title: "Healthy 5 Ingredient Granola Bars",
   imageUrl: "http://cdn.minimalistbaker.com/wp-content/uploads/2013/05/5-Ingredient-Granola-Bars-MinimalistBaker.com_.jpg",
   url: "http://minimalistbaker.com/healthy-5-ingredient-granola-bars/",
-  intent: "glutenfree_salad_lunch ",
-  one: "",
-  two: "",
-  three: "",
+  intent: "vegan_snack_bar",
+  one: "vegan",
+  two: "snacks/sides",
+  three: "bars/slices",
 });
 newRecipe.save(function(err) {
   if (err) {

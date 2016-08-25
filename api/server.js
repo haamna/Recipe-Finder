@@ -66,7 +66,7 @@ app.post('/webhook', function(req, res) {
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else {
-                   sendTextMessage(senderID, recipe.url, recipe.imageUrl);
+                   sendTextMessage(senderID, recipe.url);
                 // } else (messagingEvent.postback) {
                   // receivedPostback(messagingEvent);                   
                 }
