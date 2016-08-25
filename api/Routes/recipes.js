@@ -7,6 +7,7 @@ router.get('/', function(req,res){
 			res.status(400)
 			.json({err:err});
 		} else {
+			console.log(objectsArray);
 			res.json(objectsArray);
 		}
 	});

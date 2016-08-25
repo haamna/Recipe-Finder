@@ -64,6 +64,7 @@ app.post('/webhook', function(req, res) {
               Recipes.findOne({ "intent": intent }, function(err, recipe) {
                 console.log(recipe);
                 if (err || !recipe) {
+                  sendTextMessage(senderID, recipe)
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else {
                    sendTextMessage(senderID, recipe.url);
