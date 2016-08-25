@@ -21,7 +21,7 @@ var newRecipe = Recipe({
   title: "Veggie and Hummus Sandwich",
   imageUrl: "http://www.cookingclassy.com/wp-content/uploads/2016/04/veggie_hummus_sandwich9.-1.jpg",
   url: "http://www.cookingclassy.com/2016/04/veggie-hummus-sandwich/",
-  intent: "veg_lunch_sw",
+  intent: "veg_lunch_sw ",
   one: "Vegetarian",
   two: "Lunch",
   three: "Sandwichs",
@@ -167,6 +167,23 @@ newRecipe.save(function(err) {
     console.log(err)
   } else {
     console.log("2 Ingredient Nutella Brownies")
+  }
+});
+
+var newRecipe = Recipe({
+  title: "Double Crunch Peanut Butter And Chocolate Chip Fudge",
+  imageUrl: "https://i0.wp.com/wholefoodsimply.com/wp-content/uploads/2016/05/double-crunch-PB-choc-chip-fudge.jpg?w=819&ssl=1",
+  url: "https://wholefoodsimply.com/double-crunch-peanut-butter-and-chocolate-chip-fudge/",
+  intent: "veg_snack_bar",
+  one: "vegetarian",
+  two: "snacks/sides",
+  three: "Bars/Slices",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("Double crunch peanut butter and chocolate chip fudge")
   }
 });
 
