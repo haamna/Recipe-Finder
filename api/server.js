@@ -65,6 +65,8 @@ app.post('/webhook', function(req, res) {
                 console.log(recipe);
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
+                } else if (recipe.intent === 'greeting') {
+                  sendTextMessage(senderID, "Hi there! How can I help you today?");
                 } else {
                   sendGenericResponse(senderID, recipe.title, recipe.imageUrl || recipe.get('imageurl'), recipe.url);
                 }
