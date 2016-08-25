@@ -21,7 +21,7 @@ var newRecipe = Recipe({
   title: "Veggie and Hummus Sandwich",
   imageUrl: "http://www.cookingclassy.com/wp-content/uploads/2016/04/veggie_hummus_sandwich9.-1.jpg",
   url: "http://www.cookingclassy.com/2016/04/veggie-hummus-sandwich/",
-  intent: "veg_lunch_sw ",
+  intent: "veg_lunch_sw",
   one: "Vegetarian",
   two: "Lunch",
   three: "Sandwichs",
