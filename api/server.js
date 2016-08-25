@@ -42,7 +42,7 @@ app.post('/webhook', function(req, res) {
   var data = req.body;
   // checking that request is coming from fb page itself
   if (data.object == 'page') {
-    // iterate over each entry (the user messages coming in,in packets of data / iterate over each messaging event 
+    // iterate over each entry (all user messages coming in)
     data.entry.forEach(function(pageEntry) {
       // for each individual message
       pageEntry.messaging.forEach(function(messagingEvent) {
@@ -52,10 +52,10 @@ app.post('/webhook', function(req, res) {
         // for (i = 0; i < events.length; i++) {
         //   var event = events[i];
         //   if (event.message && event.message.text) {
-        // send to api.ai
         if (messagingEvent && messagingEvent.message && messagingEvent.message.text) {
           var text = messagingEvent.message.text;
           console.log(text);
+          // send to api.ai
           apiAiService
             .getIntent(text)
             .then(function(intent) {
@@ -65,12 +65,13 @@ app.post('/webhook', function(req, res) {
                 console.log(recipe);
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
-                } else {
-                   sendGenericMessage(senderID, recipe.title, recipe.imageUrl, recipe.url);
-                //   sendTextMessage(senderID, recipe.url);
-                // } else (messagingEvent.postback) {
-                  // receivedPostback(messagingEvent);                   
-                // }
+                } else if (text === 'Generic') {
+                  sendGenericMessage(senderID, Recipe)
+                } else if {(messagingEvent.postback) {
+                    receivedPostback(messagingEvent);
+                }
+                }              
+                // sendTextMessage(senderID, recipe.url);               
                 };
               });
             })
@@ -204,4 +205,4 @@ function callSendAPI(messageData) {
       console.error(error);
     }
   });
-}
+};
