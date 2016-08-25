@@ -64,44 +64,45 @@ app.post('/webhook', function(req, res) {
               Recipes.findOne({ "intent": intent }, function(err, recipe) {
                 console.log(recipe);
                 if (err || !recipe) {
-                  sendTextMessage(senderID, 'sorry no recipes found, try another search');   
-                } else sendGenericResponse(senderID, recipe.title, recipe.imageUrl, recipe.url);
-                } else if (messagingEvent.postback && messagingEvent.postback.payload) {
-                receivedPostback(messagingEvent);
-                });
-            }) 
-        };
-      });
+                  sendTextMessage(senderID, 'sorry no recipes found, try another search');
+                } else {
+                  sendGenericResponse(senderID, recipe.title, recipe.imageUrl, recipe.url);
+                }
+              });
+            });
 
-// sendTextMessage(senderID, recipe.url)
-  // else  (messagingEvent.postback) {
-                //     receivedPostback(messagingEvent);             
-    // var recipientID = messagingEvent.recipient.id;	
-    // var senderID = messagingEvent.sender.id;
-    //   .then(function(record) {
-    //     sendGenericResponse(senderID, title, desc, imageUrl, url);
-    //   });
-    // sendTextMessage(senderID, 'hello from bot');
-    // sendGenericResponse(senderID, title, desc, imageUrl, url);
-    // 	if (messagingEvent.optin){
-    // 		receivedAuthentication(messagingEvent);	
-    // 	} else if (messagingEvent.message) {
-    // 		receivedMessage(messagingEvent);
-    // 	} else if (messagingEvent.delivery) {
-    // 		receivedDeliveryConfirmation(messagingEvent);
-    // 	} else if (messagingEvent.postback) {
-    // 		receivedPostback(messagingEvent);
-    // 	} else {
-    // 		console.log("Webhook received unknown messagingEvent: ", messagingEvent);
-    // 	}
-    //   });
-    // });
-    // assuming all went well need to send back a 200 within 20 seconds, to let us know you've succesfully received the callback.  Otherwise the request will time out.
-    // res.sendStatus(200);
-    // }
-    res.sendStatus(200);
-  })
-};
+          // sendTextMessage(senderID, recipe.url)
+          // else  (messagingEvent.postback) {
+          //     receivedPostback(messagingEvent);             
+          // var recipientID = messagingEvent.recipient.id;	
+          // var senderID = messagingEvent.sender.id;
+          //   .then(function(record) {
+          //     sendGenericResponse(senderID, title, desc, imageUrl, url);
+          //   });
+          // sendTextMessage(senderID, 'hello from bot');
+          // sendGenericResponse(senderID, title, desc, imageUrl, url);
+          // 	if (messagingEvent.optin){
+          // 		receivedAuthentication(messagingEvent);	
+          // 	} else if (messagingEvent.message) {
+          // 		receivedMessage(messagingEvent);
+          // 	} else if (messagingEvent.delivery) {
+          // 		receivedDeliveryConfirmation(messagingEvent);
+          // 	} else if (messagingEvent.postback) {
+          // 		receivedPostback(messagingEvent);
+          // 	} else {
+          // 		console.log("Webhook received unknown messagingEvent: ", messagingEvent);
+          // 	}
+          //   });
+          // });
+          // assuming all went well need to send back a 200 within 20 seconds, to let us know you've succesfully received the callback.  Otherwise the request will time out.
+          // res.sendStatus(200);
+          // }
+        }
+      });
+    });
+  }
+  res.sendStatus(200);
+});
 
 // create instance of Mongoose and connect to our local / MongoDB database at the directory specified earlier
 var mongoose = require('mongoose');
@@ -121,13 +122,42 @@ function sendTextMessage(recipientId, messageText) {
     },
     message: {
       text: messageText
-     }
-   };
-   callSendAPI(messageData);
- }
+    }
+  };
+  callSendAPI(messageData);
+}
 
-  // templated message
-  function sendGenericMessage(recipientId, Recipe) {
+function sendGenericResponse(recipientId, title, imageUrl, url) {
+  console.log(recipientId, title, imageUrl, url);
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: title,
+            // subtitle: "subtitle",
+            // item_url: recipe.url,
+            image_url: imageUrl,
+            buttons: [{
+              type: "web_url",
+              url: url,
+              title: "View"
+            }]
+          }]
+        }
+      }
+    }
+  };
+  callSendAPI(messageData);
+}
+
+// templated message
+function sendGenericMessage(recipientId, Recipe) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -140,7 +170,7 @@ function sendTextMessage(recipientId, messageText) {
           elements: [{
             title: recipe.title,
             subtitle: "Next-generation virtual reality",
-            item_url: recipe.url,               
+            item_url: recipe.url,
             image_url: recipe.imageUrl,
             buttons: [{
               type: "web_url",
@@ -154,7 +184,7 @@ function sendTextMessage(recipientId, messageText) {
           }, {
             title: recipe.title,
             subtitle: "Your Hands, Now in VR",
-            item_url: recipe.url,               
+            item_url: recipe.url,
             image_url: recipe.imageUrl,
             buttons: [{
               type: "web_url",
@@ -169,9 +199,10 @@ function sendTextMessage(recipientId, messageText) {
         }
       }
     }
-  };  
+  };
   callSendAPI(messageData);
 }
+
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
