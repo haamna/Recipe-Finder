@@ -64,21 +64,18 @@ app.post('/webhook', function(req, res) {
               Recipes.findOne({ "intent": intent }, function(err, recipe) {
                 console.log(recipe);
                 if (err || !recipe) {
-                  sendTextMessage(senderID, 'sorry no recipes found, try another search');
-                } else if (text === 'Generic') {
-                           sendGenericMessage(senderID, Recipe)
-                           continue
-                } 
-                  sendTextMessage(senderID);
-                else if (messagingEvent.postback) {
-                    receivedPostback(messagingEvent);
-                }              
-                // sendTextMessage(senderID, recipe.url)          
-                };
+                  sendTextMessage(senderID, 'sorry no recipes found, try another search');   
+                } else sendGenericResponse(senderID, recipe.title, recipe.imageUrl, recipe.url);
               });
-            })
+            } else if (messagingEvent.postback && messagingEvent.postback.payload) {
+                receivedPostback(messagingEvent);
+            }) 
         };
       });
+
+// sendTextMessage(senderID, recipe.url)
+  // else  (messagingEvent.postback) {
+                //     receivedPostback(messagingEvent);             
     // var recipientID = messagingEvent.recipient.id;	
     // var senderID = messagingEvent.sender.id;
     //   .then(function(record) {
