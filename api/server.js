@@ -66,13 +66,14 @@ app.post('/webhook', function(req, res) {
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else {
-                   sendTextMessage(senderID, recipe.url);
+                   sendGenericMessage(recipientId, Recipe);
+                //   sendTextMessage(senderID, recipe.url);
                 // } else (messagingEvent.postback) {
                   // receivedPostback(messagingEvent);                   
-                }
+                // }
+                });
               });
-           });
-        }
+            }
         //   }
         // }
       });
@@ -118,67 +119,77 @@ db.once('open', function() {
 });
 
 // creating a stucture for the response
-function sendTextMessage(recipientId, messageText) {
+// function sendTextMessage(recipientId, messageText) {
+//   var messageData = {
+//     recipient: {
+//       id: recipientId
+//     },
+//     message: {
+//       text: messageText
+//      }
+//    };
+//    callSendAPI(messageData);
+//  }
+
+  // templated message
+  function sendGenericMessage(recipientId, Recipe) {
   var messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: messageText
-     }
-   };
-   callSendAPI(messageData);
- }
-
-  // templated message
-// function sendGenericMessage(recipientId, messageText, recipe) {
-//   var messageData = {
-//     recipient: {
-//       id: recipientId     
-//     },
-//     message:{
-//       attachment: {
-//         type: "template",
-//         payload: {
-//           template_type: "generic",
-//           elements: [
-//             {
-//             title: recipe.title,
-//             imageUrl: recipe.imageUrl,
-//             url: recipe.url,
-//             buttons: [{
-//               type: "web_url",
-//               url: recipe.url,
-//               title: "View recipe"
-//             }, {
-//               type: "postback",
-//               title: "Call Postback",
-//               payload: "Payload for this first bubble",
-//             }]
-//           }]
-//         }
-//       }
-//     }
-//   };
-//   callSendAPI(messageData);
-// }
-
-// function receivedPostback(event) {
-//   var senderID = event.sender.id;
-//   var recipientID = event.recipient.id;
-//   var timeOfPostback = event.timestamp;
-
-//   // The 'payload' param is a developer-defined field which is set in a postback 
-//   // button for Structured Messages. 
-//   var payload = event.postback.payload;
-
-//   console.log("Received postback for user %d and page %d with payload '%s' " + 
-//     "at %d", senderID, recipientID, payload, timeOfPostback);
-
-//   // When a postback is called, we'll send a message back to the sender to 
-//   // let them know it was successful
-//   sendTextMessage(senderID, "Postback called");
-// }
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: recipe.title,
+            subtitle: "Next-generation virtual reality",
+            item_url: recipe.url,               
+            image_url: recipe.imageUrl,
+            buttons: [{
+              type: "web_url",
+              url: "https://www.oculus.com/en-us/rift/",
+              title: "Open Web URL"
+            }, {
+              type: "postback",
+              title: "Call Postback",
+              payload: "Payload for first bubble",
+            }],
+          }, {
+            title: recipe.title,
+            subtitle: "Your Hands, Now in VR",
+            item_url: recipe.url,               
+            image_url: recipe.imageUrl,
+            buttons: [{
+              type: "web_url",
+              url: "https://www.oculus.com/en-us/touch/",
+              title: "Open Web URL"
+            }, {
+              type: "postback",
+              title: "Call Postback",
+              payload: "Payload for second bubble",
+            }]
+          }]
+        }
+      }
+    }
+  };  
+  callSendAPI(messageData);
+}
+function receivedPostback(event) {
+  var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfPostback = event.timestamp;
+  // The 'payload' param is a developer-defined field which is set in a postback 
+  // button for Structured Messages. 
+  var payload = event.postback.payload;
+  console.log("Received postback for user %d and page %d with payload '%s' " + 
+    "at %d", senderID, recipientID, payload, timeOfPostback);
+  // When a postback is called, we'll send a message back to the sender to 
+  // let them know it was successful
+  sendTextMessage(senderID, "Postback called");
+}
 
 // actual message getting sent, json format, for text msg
 function callSendAPI(messageData) {
