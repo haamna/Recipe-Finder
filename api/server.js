@@ -61,13 +61,13 @@ app.post('/webhook', function(req, res) {
             .then(function(intent) {
               console.log(intent);
               // go to dababase and fetch recipe belonging to that intent
-              Recipes.findOne({ "intent": intent }, function(err, recipe) {
+              //Recipes.findOne({ "intent": intent }, function(err, recipe) {
+              Recipe.find({}, function(err, objectsArray){
                 console.log(recipe);
-                if (err || !recipe) {
-                  sendTextMessage(senderID, recipe)
+                if (err || !objectsArray) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else {
-                   sendTextMessage(senderID, recipe.url);
+                   sendTextMessage(senderID, objectsArray);
                 // } else (messagingEvent.postback) {
                   // receivedPostback(messagingEvent);                   
                 }
