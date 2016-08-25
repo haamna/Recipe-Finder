@@ -173,7 +173,7 @@ newRecipe.save(function(err) {
 var newRecipe = Recipe({
   title: "Double Crunch Peanut Butter And Chocolate Chip Fudge",
   imageUrl: "https://i0.wp.com/wholefoodsimply.com/wp-content/uploads/2016/05/double-crunch-PB-choc-chip-fudge.jpg?w=819&ssl=1",
-  url: "https://wholefoodsimply.com/double-crunch-peanut-butter-and-chocolate-chip-fudge/",
+  url: "http://thenutellanut.tumblr.com/post/118458861076/2-ingredient-nutella-brownies",
   intent: "veg_snack_bar",
   one: "vegetarian",
   two: "snacks/sides",
