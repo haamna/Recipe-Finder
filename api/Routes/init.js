@@ -190,7 +190,7 @@ newRecipe.save(function(err) {
 var newRecipe = Recipe({
   title: "Hi",
   imageUrl: "there!",
-  url: "How can I help you today?",
+  url: "Hi there, how can I help you today?",
   intent: "greeting",
   one: "one",
   two: "two",
@@ -203,5 +203,23 @@ newRecipe.save(function(err) {
     console.log("greeting response")
   }
 });
+
+var newRecipe = Recipe({
+  title: "",
+  imageUrl: "",
+  url: "",
+  intent: "",
+  one: "one",
+  two: "two",
+  three: "three",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("")
+  }
+});
+
 
 // // model.exports = router;
