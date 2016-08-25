@@ -6,7 +6,7 @@ var request = require('request');
 var app = express();
 //requiring the mongoose model from models/recipes.js
 var Recipes = require('./Models/recipes');
-// var init = require('./Routes/init');
+var init = require('./Routes/init');
 var apiAiService = require('./Services/apiaiservice.js');
 var apiai = require('apiai');
 
@@ -59,7 +59,7 @@ app.post('/webhook', function(req, res) {
           apiAiService
             .getIntent(text)
             .then(function(intent) {
-              // console.log(intent);
+              console.log(intent);
               // go to dababase and fetch recipe belonging to that intent
               Recipes.findOne({ "intent": intent }, function(err, recipe) {
                 console.log(recipe);
