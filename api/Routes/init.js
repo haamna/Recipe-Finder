@@ -205,10 +205,10 @@ newRecipe.save(function(err) {
 });
 
 var newRecipe = Recipe({
-  title: "",
-  imageUrl: "",
-  url: "",
-  intent: "",
+  title: "Vegan Mango Cheesecake Recipe",
+  imageUrl: "http://happygut.ca/wp-content/uploads/2016/08/Mango-Cheesecake1.jpg",
+  url: "http://happygut.ca/vegan-mango-cheesecake-recipe/",
+  intent: "vegan_cheesecake",
   one: "one",
   two: "two",
   three: "three",
@@ -221,5 +221,38 @@ newRecipe.save(function(err) {
   }
 });
 
+var newRecipe = Recipe({
+  title: "Flourless Chocolate Cupcakes with Cocoa Powder",
+  imageUrl: "http://happygut.ca/wp-content/uploads/2016/02/Chocolate-Cupcake-1.jpg",
+  url: "http://happygut.ca/flourless-chocolate-cupcakes-with-cocoa-powder/",
+  intent: "vegan_cupcakes",
+  one: "one",
+  two: "two",
+  three: "three",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("")
+  }
+});
+
+var newRecipe = Recipe({
+  title: "Vegan Butter Chicken",
+  imageUrl: "http://happygut.ca/wp-content/uploads/2016/02/ButterChicken3.jpg",
+  url: "http://happygut.ca/vegan-butter-chicken-sauce/",
+  intent: "vegan_curry",
+  one: "one",
+  two: "two",
+  three: "three",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("")
+  }
+});
 
 // // model.exports = router;
