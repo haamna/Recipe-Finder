@@ -173,7 +173,7 @@ newRecipe.save(function(err) {
 var newRecipe = Recipe({
   title: "Double Crunch Peanut Butter And Chocolate Chip Fudge",
   imageUrl: "https://i0.wp.com/wholefoodsimply.com/wp-content/uploads/2016/05/double-crunch-PB-choc-chip-fudge.jpg?w=819&ssl=1",
-  url: "",
+  url: "https://i0.wp.com/wholefoodsimply.com/wp-content/uploads/2016/05/double-crunch-PB-choc-chip-fudge.jpg?w=819&ssl=1",
   intent: "veg_side_bar",
   one: "vegetarian",
   two: "snacks/sides",
@@ -187,7 +187,21 @@ newRecipe.save(function(err) {
   }
 });
 
+// var newRecipe = Recipe({
+//   title: "Hi there",
+//   imageUrl: " ",
+//   url: "How can I help you today?",
+//   intent: "greeting",
+//   one: "",
+//   two: "",
+//   three: "",
+// });
+// newRecipe.save(function(err) {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log("greeting response")
+//   }
+// });
 
-
-
-// model.exports = router;
+// // model.exports = router;
