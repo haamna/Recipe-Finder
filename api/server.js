@@ -66,9 +66,9 @@ app.post('/webhook', function(req, res) {
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');   
                 } else sendGenericResponse(senderID, recipe.title, recipe.imageUrl, recipe.url);
-              });
-            } else if (messagingEvent.postback && messagingEvent.postback.payload) {
+                } else if (messagingEvent.postback && messagingEvent.postback.payload) {
                 receivedPostback(messagingEvent);
+                });
             }) 
         };
       });
