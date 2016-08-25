@@ -66,7 +66,7 @@ app.post('/webhook', function(req, res) {
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else {
-                  sendGenericResponse(senderID, recipe.title, recipe.imageurl, recipe.url);
+                  sendGenericResponse(senderID, recipe.title, recipe.imageUrl || recipe.get('imageurl'), recipe.url);
                 }
               });
             });
@@ -153,6 +153,9 @@ function sendGenericResponse(recipientId, title, imageUrl, url) {
       }
     }
   };
+  console.log('------------------------------------');
+  console.log(JSON.stringify(messageData));
+  console.log('------------------------------------');
   callSendAPI(messageData);
 }
 
