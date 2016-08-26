@@ -148,7 +148,7 @@ function sendGenericResponse(recipientId, title, imageUrl, url) {
             buttons: [{
               type: "web_url",
               url: url,
-              title: "View full Recipe"
+              title: "View Recipe"
             }]
           }]
         }
