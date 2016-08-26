@@ -217,7 +217,7 @@ newRecipe.save(function(err) {
   if (err) {
     console.log(err)
   } else {
-    console.log("")
+    console.log("Vegan Mango Cheesecake")
   }
 });
 
@@ -234,7 +234,7 @@ newRecipe.save(function(err) {
   if (err) {
     console.log(err)
   } else {
-    console.log("")
+    console.log("Flourless Chocolate Cupcakes")
   }
 });
 
@@ -251,8 +251,26 @@ newRecipe.save(function(err) {
   if (err) {
     console.log(err)
   } else {
-    console.log("")
+    console.log("Vegan Butter Chicken")
   }
 });
 
-// // model.exports = router;
+
+var newRecipe = Recipe({
+  title: "Healthy Cauliflower Fried Rice",
+  imageUrl: "http://www.eat-yourself-skinny.com/wp-content/uploads/2015/09/4441.jpg",
+  url: "http://www.eat-yourself-skinny.com/2015/09/healthy-cauliflower-fried-rice.html",
+  intent: "veg_rice",
+  one: "one",
+  two: "two",
+  three: "three",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("Healthy Cauliflower Fried Rice")
+  }
+});
+
+// model.exports = router;
