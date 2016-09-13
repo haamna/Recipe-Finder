@@ -55,7 +55,7 @@ var newRecipe = Recipe({
   title: "Veggie Hummus Cucumber Boats",
   imageUrl: "http://www.skinnytaste.com/wp-content/uploads/2016/07/Cucumber-Hummus-Boats-5.jpg",
   url: "http://www.skinnytaste.com/veggie-hummus-cucumber-boats/",
-  intent: "vegan_snack_appetiser",
+  intent: "veg_sk",
   one: "Vegan",
   two: "Snacks/Sides",
   three: "Appetisers",
