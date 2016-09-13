@@ -292,7 +292,7 @@ newRecipe.save(function(err) {
 
 var newRecipe = Recipe({
   title: "Hey",
-  imageUrl: "Chicken is delicious",
+  imageUrl: "Good choice",
   url: "Are you in the mood for something really light or more of a roast style dinner?",
   intent: "ck",
   one: "one",
