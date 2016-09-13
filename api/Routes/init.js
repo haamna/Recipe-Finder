@@ -273,4 +273,39 @@ newRecipe.save(function(err) {
   }
 });
 
+var newRecipe = Recipe({
+  title: "Oven Roasted Rosemary Chicken Thighs, Sugar Snap Peas and Quinoa Salad",
+  imageUrl: "http://s.iamafoodblog.com/wp-content/uploads/2015/05/lemon-rosemary-roast-chicken-thighs-recipe-7.jpg",
+  url: "http://iamafoodblog.com/oven-roasted-rosemary-chicken-thighs-sugar-snap-peas-quinoa/",
+  intent: "roast_chicken",
+  one: "one",
+  two: "two",
+  three: "three",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("Healthy Cauliflower Fried Rice")
+  }
+});
+
+
+var newRecipe = Recipe({
+  title: "Response to Chicken",
+  imageUrl: "Chicken is delicious!",
+  url: "Are you in the mood for something really light or more of a roast dinner?",
+  intent: "chicken_only",
+  one: "one",
+  two: "two",
+  three: "three",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("Response to chicken")
+  }
+});
+
 // model.exports = router;
