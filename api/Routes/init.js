@@ -1,9 +1,9 @@
 var Recipe = require('../Models/recipes');
 var newRecipe = Recipe({
-  title: "Fresh herb infused Quinoa Salad",
+  title: "Fresh Herb Infused Quinoa Salad",
   imageUrl: "http://cleanfoodcrush.com/wp-content/uploads/2016/08/Fresh-herb-infused-Quinoa-Salad.jpg",
   url: "http://cleanfoodcrush.com/herb-quinoa-salad/",
-  intent: "gf_lunch_salad",
+  intent: "q_s",
   one: "Gluten Free",
   two: "Lunch",
   three: "Salad",
@@ -157,7 +157,7 @@ var newRecipe = Recipe({
   title: "2 Ingredient Nutella Brownies",
   imageUrl: "http://67.media.tumblr.com/18d163c19d82a202cdbb725b106d3cd2/tumblr_inline_no1juu3bij1tovgdd_500.jpg",
   url: "http://thenutellanut.tumblr.com/post/118458861076/2-ingredient-nutella-brownies",
-  intent: "gf_dessert_bars",
+  intent: "brownie",
   one: "Gluten Free",
   two: "Dessert",
   three: "Bars/Slices",
