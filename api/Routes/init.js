@@ -290,12 +290,11 @@ newRecipe.save(function(err) {
   }
 });
 
-
 var newRecipe = Recipe({
-  title: "Response to Chicken",
+  title: "Hey",
   imageUrl: "Chicken is delicious!",
-  url: "Are you in the mood for something really light or more of a roast?",
-  intent: "chicken_only",
+  url: "Are you in the mood for something really light or more of a roast style dinner?",
+  intent: "chicken",
   one: "one",
   two: "two",
   three: "three",
@@ -304,8 +303,9 @@ newRecipe.save(function(err) {
   if (err) {
     console.log(err)
   } else {
-    console.log("Response to chicken")
+    console.log("chicken response")
   }
 });
+
 
 // model.exports = router;
