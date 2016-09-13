@@ -292,7 +292,7 @@ newRecipe.save(function(err) {
 
 var newRecipe = Recipe({
   title: "Hey",
-  imageUrl: "Chicken is delicious!",
+  imageUrl: "Chicken is delicious",
   url: "Are you in the mood for something really light or more of a roast style dinner?",
   intent: "ck",
   one: "one",
@@ -303,7 +303,7 @@ newRecipe.save(function(err) {
   if (err) {
     console.log(err)
   } else {
-    console.log("chicken response")
+    console.log("ck")
   }
 });
 
