@@ -286,7 +286,7 @@ newRecipe.save(function(err) {
   if (err) {
     console.log(err)
   } else {
-    console.log("Healthy Cauliflower Fried Rice")
+    console.log("Roast Chicken")
   }
 });
 
@@ -294,7 +294,7 @@ newRecipe.save(function(err) {
 var newRecipe = Recipe({
   title: "Response to Chicken",
   imageUrl: "Chicken is delicious!",
-  url: "Are you in the mood for something really light or more of a roast dinner?",
+  url: "Are you in the mood for something really light or more of a roast?",
   intent: "chicken_only",
   one: "one",
   two: "two",
