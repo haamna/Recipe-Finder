@@ -190,7 +190,7 @@ newRecipe.save(function(err) {
 var newRecipe = Recipe({
   title: "Hi",
   imageUrl: "there!",
-  url: "Hi there, how can I help you today?",
+  url: "Welcome to the Recipe Finder chat bot! what recipe can I help you find today?",
   intent: "greeting",
   one: "one",
   two: "two",
@@ -290,22 +290,22 @@ newRecipe.save(function(err) {
   }
 });
 
-var newRecipe = Recipe({
-  title: "Hey",
-  imageUrl: "Good choice",
-  url: "Are you in the mood for something really light or more of a roast style dinner?",
-  intent: "ck",
-  one: "one",
-  two: "two",
-  three: "three",
-});
-newRecipe.save(function(err) {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log("ck")
-  }
-});
+// var newRecipe = Recipe({
+//   title: "Hey",
+//   imageUrl: "Good choice",
+//   url: "Are you in the mood for something really light or more of a roast style dinner?",
+//   intent: "ck",
+//   one: "one",
+//   two: "two",
+//   three: "three",
+// });
+// newRecipe.save(function(err) {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log("ck")
+//   }
+// });
 
 var newRecipe = Recipe({
   title: "Grilled Marinated Steak Kebabs",
@@ -321,6 +321,23 @@ newRecipe.save(function(err) {
     console.log(err)
   } else {
     console.log("beef")
+  }
+});
+
+var newRecipe = Recipe({
+  title: "Cauliflower Pizza Crust with Roasted Vegetables and Goat Cheese",
+  imageUrl: "http://www.domesticate-me.com/wp-content/uploads/2013/11/cauliflower-pizza-crust-with-roasted-vegetables-and-goat-cheese-10-2.jpg",
+  url: "http://domesticate-me.com/cauliflower-pizza-crust-with-roasted-vegetables-and-goat-cheese/#/",
+  intent: "pizza",
+  one: "one",
+  two: "two",
+  three: "three",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("pizza")
   }
 });
 
