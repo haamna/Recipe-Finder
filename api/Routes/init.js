@@ -294,7 +294,7 @@ var newRecipe = Recipe({
   title: "Hey",
   imageUrl: "Chicken is delicious!",
   url: "Are you in the mood for something really light or more of a roast style dinner?",
-  intent: "chicken",
+  intent: "ck",
   one: "one",
   two: "two",
   three: "three",
@@ -306,6 +306,24 @@ newRecipe.save(function(err) {
     console.log("chicken response")
   }
 });
+
+var newRecipe = Recipe({
+  title: "Grilled Marinated Steak Kebabs",
+  imageUrl: "http://www.simplyscratch.com/wp-content/uploads/2013/06/Grilled-Marinated-Steak-Kebabs-ll-www.SimplyScratch.com_.jpg",
+  url: "http://www.simplyscratch.com/2013/06/grilled-marinated-steak-kebabs.html",
+  intent: "beef",
+  one: "one",
+  two: "two",
+  three: "three",
+});
+newRecipe.save(function(err) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log("beef")
+  }
+});
+
 
 
 // model.exports = router;
