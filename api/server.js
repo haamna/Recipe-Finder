@@ -66,7 +66,7 @@ app.post('/webhook', function(req, res) {
                 if (err || !recipe) {
                   sendTextMessage(senderID, 'sorry no recipes found, try another search');
                 } else if (recipe.intent === 'greeting') {
-                  sendTextMessage(senderID, "Hi there! How can I help you today?");
+                  sendTextMessage(senderID, "Welcome to the Recipe Finder chatbot! what recipe can I help you find today?");
                 } else {
                   sendGenericResponse(senderID, recipe.title, recipe.imageUrl || recipe.get('imageurl'), recipe.url);
                 }
